@@ -13,9 +13,16 @@ const DispalyUsers = createSlice({
     initialState : {
         responseData: [],
         status : 'idle',
-        error : null
+        error : null,
+        singleUserData : []
     },
-    reducers : {},
+    reducers : {
+        displayUserById(state , action){
+            // console.log("display state", state);
+            console.log("display user", action.payload);
+            state.singleUserData = action.payload;
+        }
+    },
     extraReducers(builder){
         builder.addCase(fetchDisplayUser.pending, (state)=>{
             state.status = 'Loading';
@@ -32,9 +39,11 @@ const DispalyUsers = createSlice({
     }
 })
 
-console.log("dispplayUser", DispalyUsers.state)
+console.log("dispplayUser", DispalyUsers.actions)
 
 /* we will pass the reducers from here so we can directly access it in store. and remember we write reducers
 but while passing the reducers we will use reducer not reducers.
 */
 export default DispalyUsers.reducer;
+//exporting the reducer so it can be accessed in users.js file and 
+export const { displayUserById } = DispalyUsers.actions;

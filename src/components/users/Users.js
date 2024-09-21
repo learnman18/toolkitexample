@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchDisplayUser } from "../Store/slices/UsersSlice";
+import { fetchDisplayUser, displayUserById } from "../Store/slices/UsersSlice";
 
 const Users = () => {
 
@@ -40,7 +40,7 @@ const Users = () => {
 
     const individualUserPage = (item) => {
         console.log("item" , item)
-        // dispatch(selectUser(item));
+        dispatch(displayUserById(item));
     }
 
     return(
@@ -64,7 +64,6 @@ const Users = () => {
                                 <Link className="text-burly underline" to={`/users/${item.id}`} 
                                 onClick={()=>individualUserPage(item)}>{item.username}</Link>
                             </td>
-                            <td className="border border-slate-700 sm:border-0 px-3 py-2">{item.username}</td>
                             <td className="border border-slate-700 sm:border-0 px-3 py-2">{item.name}</td>
                             <td className="border border-slate-700 sm:border-0 px-3 py-2">{item.email}</td>
                             <td className="border border-slate-700 sm:border-0 px-3 py-2">{item.phone}</td>
