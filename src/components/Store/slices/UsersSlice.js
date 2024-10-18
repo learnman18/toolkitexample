@@ -29,7 +29,7 @@ const DispalyUsers = createSlice({
         })
         .addCase(fetchDisplayUser.fulfilled, (state, action)=>{
             state.status = 'Successful';
-            console.log("fuliled payload", action.payload);
+            // console.log("fuliled payload", action.payload);
             state.responseData = action.payload;
         })
         .addCase(fetchDisplayUser.rejected, (state, action) => {
