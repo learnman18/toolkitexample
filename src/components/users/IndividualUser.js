@@ -1,54 +1,3 @@
-// import React, { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useParams } from "react-router-dom";
-// import { displayUserById, fetchDisplayUser } from "../Store/slices/UsersSlice";
-
-
-// const IndividualUser = () => {
-
-//     const { id } = useParams();
-//     console.log("id", parseInt(id));
-//     const dispatch =  useDispatch();
-//     const individualResponse = useSelector((state)=>state.users.responseData);
-//     const singleUserData = useSelector((state)=>state.users.singleUserData);
-//     console.log('singleUserData', singleUserData);
-//     console.log('individualResponse', individualResponse);
-
-//     useEffect(()=>{
-//         if(!singleUserData.length){
-//             console.log("inside singleuser", singleUserData)
-//             dispatch(fetchDisplayUser());
-//         }else{
-//             const user = singleUserData.find((user)=>user.id === parseInt(id));
-//             if(user){
-//                 dispatch(displayUserById(user));
-//             }
-//         }
-//     },[dispatch, id, singleUserData]);
-
-//     useEffect(()=>{
-//         if(!individualResponse){
-//             dispatch(fetchDisplayUser());
-//             dispatch(displayUserById(id)); // id coming from useParams
-//             console.log("individualResponse effect" , individualResponse)
-//         }
-//     },[id, dispatch, individualResponse])
-
-//     // console.log("individualResponse" , singleUserData);
-
-//     return(
-//         <>
-//             <div>
-//                 <h2 className="text-32">{singleUserData.name}</h2>
-//                 <p className="text-lg">Username - {singleUserData.username}</p>
-//                 <p className="text-lg">Email - {singleUserData.email}</p>
-//             </div>
-//         </>
-//     )
-// }
-
-// export default IndividualUser;
-
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -67,8 +16,9 @@ const IndividualUser = () => {
         if (allUsers.length === 0) {
             dispatch(fetchDisplayUser());
         } else {
+            //if user.id is same as id of use params, store the details of that particular user
             const user = allUsers.find((user) => user.id === parseInt(id));
-            console.log("user", user)
+            console.log("user fetched", user)
             if (user) {
                 dispatch(displayUserById(user));
             }
@@ -76,15 +26,16 @@ const IndividualUser = () => {
     }, [dispatch, id, allUsers]);
 
     // Dispatch `displayUserById` once the user list is fetched
-    useEffect(() => {
-        if (status === 'Successful' && !individualResponse) {
-            const user = allUsers.find((user) => user.id === parseInt(id));
-            console.log("user", user)
-            if (user) {
-                dispatch(displayUserById(user));
-            }
-        }
-    }, [status, allUsers, id, dispatch, individualResponse]);
+    // useEffect(() => {
+    //     if (status === 'Successful' && !individualResponse) {
+    //         //if user.id is same as id of use params, store the details of that particular user
+    //         const user = allUsers.find((user) => user.id === parseInt(id));
+    //         console.log("user already fetched", user)
+    //         if (user) {
+    //             dispatch(displayUserById(user));
+    //         }
+    //     }
+    // }, [status, allUsers, id, dispatch, individualResponse]);
 
     if (status === 'Loading') {
         return <div>Loading...</div>;
