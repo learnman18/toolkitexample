@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios";
 
+//using axios
 export const fetchIndividualUserDetails = createAsyncThunk("fetchIndividualUserDetails", async(id)=>{
-    console.log("reponse id", id)
+    // console.log("reponse id", id)
     const response = await axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${id}`);
-    console.log("response data", response.data);
+    // console.log("response data", response.data);
     return response.data;
 })
 
@@ -21,6 +22,7 @@ const DisplayFetchIndividualUserDetails = createSlice({
             state.status = 'Loading';
         })
         builder.addCase(fetchIndividualUserDetails.fulfilled, (state, action)=>{
+            state.status = 'Successful';
             state.individualUserData = action.payload;
         })
         builder.addCase(fetchIndividualUserDetails.rejected, (state, action)=>{

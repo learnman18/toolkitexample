@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { displayUserById, fetchDisplayUser } from "../Store/slices/UsersSlice";
+import IndividualUserPost from "./IndividualUserPost";
 
 const IndividualUser = () => {
     const { id } = useParams();
@@ -14,11 +15,13 @@ const IndividualUser = () => {
     // Fetch all users if not already fetched
     useEffect(() => {
         if (allUsers.length === 0) {
+            console.log("if part")
             dispatch(fetchDisplayUser());
         } else {
             //if user.id is same as id of use params, store the details of that particular user
             const user = allUsers.find((user) => user.id === parseInt(id));
-            console.log("user fetched", user)
+            // console.log("user fetched", user)
+            console.log("else part")
             if (user) {
                 dispatch(displayUserById(user));
             }
@@ -46,11 +49,14 @@ const IndividualUser = () => {
     }
 
     return (
-        <div>
-            <h2 className="text-32">{individualResponse.name}</h2>
-            <p className="text-lg">Username - {individualResponse.username}</p>
-            <p className="text-lg">Email - {individualResponse.email}</p>
-        </div>
+        <>
+            <div className="pb-5">
+                <h2 className="text-32">{individualResponse.name}</h2>
+                <p className="text-lg">Username - {individualResponse.username}</p>
+                <p className="text-lg">Email - {individualResponse.email}</p>
+            </div>
+            <IndividualUserPost clickedUserId={id}></IndividualUserPost>
+        </>
     );
 };
 

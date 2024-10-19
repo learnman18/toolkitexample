@@ -22,6 +22,7 @@ module.exports = {
         'lightRed': '#be123c',
         'limeLight' : '#84cc16',
         'emeraledLight' : '#34d399',
+        'cyan-700' : '#0e7490'
       },
     },
     screens: {

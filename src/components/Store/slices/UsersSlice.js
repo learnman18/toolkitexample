@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+//using fetch
 export const fetchDisplayUser = createAsyncThunk('fetchDisplayUser',
     async () => {
         const response = await fetch('https://jsonplaceholder.typicode.com/users');
-        console.log("response", response);
         return response.json();
     }
 )
@@ -19,7 +19,7 @@ const DispalyUsers = createSlice({
     reducers : {
         displayUserById(state , action){
             // console.log("display state", state);
-            console.log("display user", action.payload);
+            // console.log("display user", action.payload);
             state.singleUserData = action.payload;
         }
     },
