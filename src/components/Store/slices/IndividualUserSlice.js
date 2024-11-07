@@ -14,9 +14,15 @@ const DisplayFetchIndividualUserDetails = createSlice({
     initialState : {
         individualUserData : [],
         status : 'idle',
-        error : null
+        error : null,
+        userPostId : []
     },
-    reducers : {},
+    reducers : {
+        storeUserPostId(state, action){
+            state.userPostId = action.payload;
+            console.log("state.userPostId", state.userPostId);
+        }
+    },
     extraReducers(builder){
         builder.addCase(fetchIndividualUserDetails.pending , (state)=>{
             state.status = 'Loading';
@@ -33,3 +39,4 @@ const DisplayFetchIndividualUserDetails = createSlice({
 })
 
 export default DisplayFetchIndividualUserDetails.reducer;
+export const { storeUserPostId } = DisplayFetchIndividualUserDetails.actions;

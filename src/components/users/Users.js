@@ -13,13 +13,13 @@ const Users = () => {
 
     const responseData = useSelector((state) => state.users.responseData);
     const status = useSelector((state) => state.users.status);
-    const error = useSelector((state) => state.users.error);
+    // const error = useSelector((state) => state.users.error);
        
     //to get the value of error and data we need to dispatch the fetchUsers() function.  
 
-    console.log("initial state", responseData);
-    console.log("initial status", status);
-    console.log("initial error", error);
+    // console.log("initial state", responseData);
+    // console.log("initial status", status);
+    // console.log("initial error", error);
 
     useEffect(()=>{
         setUserResponseData(responseData)
@@ -39,7 +39,12 @@ const Users = () => {
     */
 
     const individualUserPage = (item) => {
-        console.log("item" , item)
+        console.log("item" , item);
+        let itemDetails = {
+            name: item.name,
+            id: item.id
+        }
+        localStorage.setItem("postOwnerDetail", JSON.stringify(itemDetails));
         dispatch(displayUserById(item));
     }
 
