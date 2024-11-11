@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const UserInnerPost = () => {
 
@@ -22,7 +22,7 @@ const UserInnerPost = () => {
 
     return(
         <>
-            <p>Posted by : {getPostOwnerDetail && getPostOwnerDetail.name}</p>
+            <p>Posted by : <Link to={`/users/${getPostOwnerDetail.id}`}>{getPostOwnerDetail && getPostOwnerDetail.name}</Link></p>
             <p>Hello {postId}</p>
             <p>Title : {getUserPostDetail && getUserPostDetail.title}</p>
         </>
