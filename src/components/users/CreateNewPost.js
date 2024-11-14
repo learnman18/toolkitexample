@@ -19,7 +19,7 @@ const CreateEditPost = (props) => {
 
     const dispatch = useDispatch();
     const postData = useSelector((state)=>state.singleUser.individualUserData);
-    console.log("postData" , postData);
+    // console.log("postData" , postData);
     
     useEffect(()=>{
         dispatch(fetchIndividualUserDetails(props.userId));
@@ -31,7 +31,7 @@ const CreateEditPost = (props) => {
         }
     },[postData])
 
-    console.log("userPosts create", userPosts)
+    // console.log("userPosts create", userPosts)
     
     //Add new post button
     const showHidePost = () =>{
@@ -77,7 +77,7 @@ const CreateEditPost = (props) => {
             title : postTitleUpdate,
             body : postContentUpdate
         }
-        console.log("newPost", newPost)
+        // console.log("newPost", newPost)
         // to add the new post on top
         setUserPosts([newPost, ...userPosts]); 
         //to add new post on botom

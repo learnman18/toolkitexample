@@ -20,7 +20,7 @@ const DisplayFetchIndividualUserDetails = createSlice({
     reducers : {
         storeUserPostId(state, action){
             state.userPostId = action.payload;
-            console.log("state.userPostId", state.userPostId);
+            // console.log("state.userPostId", state.userPostId);
         }
     },
     extraReducers(builder){

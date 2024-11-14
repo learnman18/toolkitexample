@@ -39,7 +39,7 @@ const DispalyUsers = createSlice({
     }
 })
 
-console.log("dispplayUser", DispalyUsers.actions)
+// console.log("dispplayUser", DispalyUsers.actions)
 
 /* we will pass the reducers from here so we can directly access it in store. and remember we write reducers
 but while passing the reducers we will use reducer not reducers.

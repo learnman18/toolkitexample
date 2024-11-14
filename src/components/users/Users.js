@@ -17,17 +17,13 @@ const Users = () => {
        
     //to get the value of error and data we need to dispatch the fetchUsers() function.  
 
-    // console.log("initial state", responseData);
-    // console.log("initial status", status);
-    // console.log("initial error", error);
-
     useEffect(()=>{
         setUserResponseData(responseData)
     },[responseData])
 
     useEffect(()=>{
         if(status === 'idle'){
-            console.log('Dispatching fetchTodos...')
+            // console.log('Dispatching fetchTodos...')
             dispatch(fetchDisplayUser());
         }
     },[dispatch, status])
@@ -39,7 +35,6 @@ const Users = () => {
     */
 
     const individualUserPage = (item) => {
-        console.log("item" , item);
         let itemDetails = {
             name: item.name,
             id: item.id,

@@ -9,7 +9,7 @@ const IndividualUserPost = (props) => {
     const dispatch = useDispatch();
     const userPost = useSelector((state)=>state.singleUser.individualUserData);
 
-    console.log("userPost", userPost);
+    // console.log("userPost", userPost);
 
     useEffect(()=>{
         dispatch(fetchIndividualUserDetails(props.clickedUserId));
@@ -19,7 +19,6 @@ const IndividualUserPost = (props) => {
         //When sending data to a web server, the data has to be a string. by using this method we convert JS object to string.
         localStorage.setItem('userPostDetail', JSON.stringify(ownerAllDetails));
         dispatch(storeUserPostId(ownerAllDetails));
-        // console.log("hello", ownerId);
     }
 
     return(

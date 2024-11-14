@@ -16,13 +16,11 @@ const IndividualUser = () => {
     // Fetch all users if not already fetched
     useEffect(() => {
         if (allUsers.length === 0) {
-            console.log("if part")
             dispatch(fetchDisplayUser());
         } else {
             //if user.id is same as id of use params, store the details of that particular user
             const user = allUsers.find((user) => user.id === parseInt(id));
             // console.log("user fetched", user)
-            console.log("else part")
             if (user) {
                 dispatch(displayUserById(user));
             }
