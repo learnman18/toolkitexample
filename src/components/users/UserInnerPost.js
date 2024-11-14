@@ -1,9 +1,9 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const UserInnerPost = () => {
 
-    const { postId } = useParams();
+    // const { postId } = useParams();
     /*
         we can use all the reducers from usersSlice and IndividualUserSlice to get all the data but here we are using
         localstroage and all those data are coming only from the reducers but we are accessing those data here on
@@ -23,7 +23,7 @@ const UserInnerPost = () => {
     return(
         <>
             <p>Posted by : <Link to={`/users/${getPostOwnerDetail.id}`}>{getPostOwnerDetail && getPostOwnerDetail.name}</Link></p>
-            <p>Hello {postId}</p>
+            <p>Username : {getPostOwnerDetail && getPostOwnerDetail.username}</p>
             <p>Title : {getUserPostDetail && getUserPostDetail.title}</p>
         </>
     )

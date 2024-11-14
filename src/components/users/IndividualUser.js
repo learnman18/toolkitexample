@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { displayUserById, fetchDisplayUser } from "../Store/slices/UsersSlice";
-import IndividualUserPost from "./IndividualUserPost";
+// import IndividualUserPost from "./IndividualUserPost";
+import CreateEditPost from "./CreateNewPost";
 
 const IndividualUser = () => {
     const { id } = useParams();
@@ -55,7 +56,10 @@ const IndividualUser = () => {
                 <p className="text-lg">Username - {individualResponse.username}</p>
                 <p className="text-lg">Email - {individualResponse.email}</p>
             </div>
-            <IndividualUserPost clickedUserId={id}></IndividualUserPost>
+            <div>
+                <CreateEditPost userId = {individualResponse.id}></CreateEditPost>
+            </div>
+            {/* <IndividualUserPost clickedUserId={id}></IndividualUserPost> */}
         </>
     );
 };

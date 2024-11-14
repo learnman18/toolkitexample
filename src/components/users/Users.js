@@ -42,7 +42,8 @@ const Users = () => {
         console.log("item" , item);
         let itemDetails = {
             name: item.name,
-            id: item.id
+            id: item.id,
+            username: item.username
         }
         localStorage.setItem("postOwnerDetail", JSON.stringify(itemDetails));
         dispatch(displayUserById(item));
