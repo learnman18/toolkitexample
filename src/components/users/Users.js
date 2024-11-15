@@ -35,6 +35,7 @@ const Users = () => {
     */
 
     const individualUserPage = (item) => {
+        console.log("item", item);
         let itemDetails = {
             name: item.name,
             id: item.id,

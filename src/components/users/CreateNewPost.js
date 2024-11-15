@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { UserPostsAction } from "../actions/UserPostsAction";
-import { fetchIndividualUserDetails } from "../Store/slices/IndividualUserSlice";
+import { fetchIndividualUserDetails, storeUserPostId } from "../Store/slices/IndividualUserSlice";
 import { Link } from "react-router-dom";
 
 /* we are getting this props from the User.js file, we are passing the ID from their and we are accessing it here and
@@ -132,6 +132,12 @@ const CreateEditPost = (props) => {
         setPostContentUpdate(x);
     }
 
+    const ownerIdGettingFromPost = (ownerAllDetails) =>{
+        //When sending data to a web server, the data has to be a string. by using this method we convert JS object to string.
+        localStorage.setItem('userPostDetail', JSON.stringify(ownerAllDetails));
+        dispatch(storeUserPostId(ownerAllDetails));
+    }
+
 
     return(
         <>
@@ -183,7 +189,7 @@ const CreateEditPost = (props) => {
                                     ) : (
                                     <div>
                                         <div>
-                                            <Link to={`/posts/${item.id}`} className="card_title text-cyan-700 font-semibold text-xl">
+                                            <Link to={`/posts/${item.id}`} onClick={()=>ownerIdGettingFromPost(item)} className="card_title text-cyan-700 font-semibold text-xl">
                                                 {item.title}
                                             </Link>
                                         </div>
