@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { UserPostsAction } from "../actions/UserPostsAction";
 import { fetchIndividualUserDetails, storeUserPostId } from "../Store/slices/IndividualUserSlice";
 import { Link } from "react-router-dom";
+import Spinner from "../spinner/Spinner";
 
 /* we are getting this props from the User.js file, we are passing the ID from their and we are accessing it here and
 passing it as parameter in fetchIndividualUserDetails() fucntion, and we are accessing this id in userpostaction.js file.
@@ -19,6 +20,7 @@ const CreateEditPost = (props) => {
 
     const dispatch = useDispatch();
     const postData = useSelector((state)=>state.singleUser.individualUserData);
+    const status = useSelector((state)=>state.singleUser.status);
     // console.log("postData" , postData);
     
     useEffect(()=>{
@@ -138,6 +140,13 @@ const CreateEditPost = (props) => {
         dispatch(storeUserPostId(ownerAllDetails));
     }
 
+    if (status === 'Loading') {
+        return(
+            <>
+                <Spinner></Spinner>
+            </>
+        );
+    }
 
     return(
         <>

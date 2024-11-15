@@ -22,7 +22,7 @@ const UserInnerPost = () => {
 
     return(
         <>
-            <p>Posted by : <Link to={`/users/${getPostOwnerDetail.id}`}>{getPostOwnerDetail && getPostOwnerDetail.name}</Link></p>
+            <p>Posted by : <Link to={`/users/${getPostOwnerDetail.id}`} className="text-cyan-700 underline">{getPostOwnerDetail && getPostOwnerDetail.name}</Link></p>
             <p>Username : {getPostOwnerDetail && getPostOwnerDetail.username}</p>
             <p>Title : {getUserPostDetail && getUserPostDetail.title}</p>
         </>

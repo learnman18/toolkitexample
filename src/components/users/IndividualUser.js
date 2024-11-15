@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { displayUserById, fetchDisplayUser } from "../Store/slices/UsersSlice";
 // import IndividualUserPost from "./IndividualUserPost";
 import CreateEditPost from "./CreateNewPost";
+import Spinner from "../spinner/Spinner";
 
 const IndividualUser = () => {
     const { id } = useParams();
@@ -40,7 +41,11 @@ const IndividualUser = () => {
     // }, [status, allUsers, id, dispatch, individualResponse]);
 
     if (status === 'Loading') {
-        return <div>Loading...</div>;
+        return(
+            <>
+                <Spinner></Spinner>
+            </>
+        );
     }
 
     if (!individualResponse) {
