@@ -55,6 +55,7 @@ const IndividualUser = () => {
     return (
         <>
             <div className="pb-5">
+                <h1>Hello World</h1>
                 <h2 className="text-32">{individualResponse.name}</h2>
                 <p className="text-lg">Username - {individualResponse.username}</p>
                 <p className="text-lg">Email - {individualResponse.email}</p>
