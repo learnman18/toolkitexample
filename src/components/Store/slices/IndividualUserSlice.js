@@ -6,6 +6,7 @@ export const fetchIndividualUserDetails = createAsyncThunk("fetchIndividualUserD
     // console.log("reponse id", id)
     const response = await axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${id}`);
     // console.log("response data", response.data);
+    console.log("response id", id)
     return response.data;
 })
 
